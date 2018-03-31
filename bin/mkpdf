@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+
+if [ "$1" == '' ]; then
+    echo 'No input file provided. Exiting...'
+    exit -1
+fi
+
+echo "\nCompiling $1 ...\n"
+xelatex "$1"
+echo "\nCompiling table of contents...\n"
+xelatex "$1"
+echo "\nRemoving auxiliary files..."
+rm -f ./*.aux
+rm -f ./*.out
+rm -f ./*.toc
+rm -f ./*.log
+echo ''
+exit 0
