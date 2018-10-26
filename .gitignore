@@ -13,11 +13,13 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
-
+## Emacs ignores
+*~
+\#*\#
+.\#*
 
 ## Home folder ignores
 
-/.*/
 /Desktop
 /dl
 /h
