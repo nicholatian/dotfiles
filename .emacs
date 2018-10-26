@@ -1,0 +1,5 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
+(setq-default tab-width 3)
+(setq-default c-basic-offset 3)
+(setq-default indent-tabs-mode t)
