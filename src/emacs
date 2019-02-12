@@ -1,0 +1,48 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
+(load-theme 'zenburn t)
+(setq-default tab-width 3
+				  js-indent-level 3
+				  c-basic-offset 3
+				  c-default-style "bsd"
+				  indent-tabs-mode t
+				  whitespace-line-column 79
+				  whitespace-style '(face lines-tail))
+
+(require 'smart-tabs-mode)
+;; indentation using smart-tabs-mode
+(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
+(smart-tabs-advice js-indent-line js-basic-offset)
+;; nxml-mode
+(setq 
+    nxml-child-indent 3
+    nxml-attribute-indent 3
+    nxml-slash-auto-complete-flag t)
+
+(add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'rest-mode-hook #'whitespace-mode)
+(smart-tabs-advice python-indent-line-1 python-indent)
+    (add-hook 'python-mode-hook
+              (lambda ()
+                (setq indent-tabs-mode t)
+                (setq tab-width (default-value 'tab-width))))
+
+; clang-format
+(require 'clang-format)
+(global-set-key (kbd "C-c i") 'clang-format-region)
+(global-set-key (kbd "C-c u") 'clang-format-buffer)
+(setq clang-format-style-option "file")
+
+; startup setup
+(fset 'startup
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("3oxansi-term
+xrename-bufferterm0xansi-termusr/bin/cmus
+xrename-buffercmusb" 0 "%d")) arg)))
+
+; startup2
+(fset 'startup2
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("3oxansi-term
+xrename-bufferterm0xansi-termusr/bin/cmus
+xrename-buffercmusxansi-term
+xrename-bufferterm1bterm0bcmusok" 0 "%d")) arg)))
+
