@@ -2,7 +2,7 @@
 #
 
 for file in $(ls -1 src); do
-	cp "src/${file}" "${HOME}/.${file}";
+	cp -r "src/${file}" "${HOME}/.${file}";
 done
 unset file;
 unset bfile;
