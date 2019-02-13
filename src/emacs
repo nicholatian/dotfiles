@@ -33,6 +33,11 @@
 (global-set-key (kbd "C-c u") 'clang-format-buffer)
 (setq clang-format-style-option "file")
 
+; require language modes
+(require 'd-mode)
+(require 'go-mode)
+(require 'rust-mode)
+
 ; startup setup
 (fset 'startup
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("3oxansi-term
