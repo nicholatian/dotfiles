@@ -39,3 +39,19 @@ export MANPAGER='less -X';
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
+
+[ -d "${HOME}/.local/bin" ] && \
+	export PATH="${HOME}/.local/bin:${PATH}";
+
+if [ -d /opt/devkitpro ]; then
+	export DEVKITPRO=/opt/devkitpro;
+	[ -d "${DEVKITPRO}/devkitARM" ] && \
+		export DEVKITARM="${DEVKITPRO}/devkitARM" && \
+		PATH="${DEVKITARM}/bin:${PATH}";
+	[ -d "${DEVKITPRO}/devkitPPC" ] && \
+		export DEVKITPPC="${DEVKITPRO}/devkitPPC" && \
+		PATH="${DEVKITPPC}/bin:${PATH}";
+	[ -d "${DEVKITPRO}/tools" ] && \
+		PATH="${DEVKITPRO}/tools/bin:${PATH}";
+	export PATH;
+fi
