@@ -45,6 +45,7 @@ PATH="${HOME}/.gem/ruby/$(ls -1 ${HOME}/.gem/ruby)/bin:${PATH}";
 
 # Android SDK
 [ -d "${HOME}/Android/Sdk" ] && \
+[ "${ANDROID_HOME}" != '' ] && \
 PATH="${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${PATH}"; \
 PATH="${ANDROID_HOME}/tools/bin:${PATH}";
 

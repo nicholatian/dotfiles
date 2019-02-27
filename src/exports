@@ -40,9 +40,6 @@ export MANPAGER='less -X';
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
 
-[ -d "${HOME}/.local/bin" ] && \
-	export PATH="${HOME}/.local/bin:${PATH}";
-
 if [ -d /opt/devkitpro ]; then
 	export DEVKITPRO=/opt/devkitpro;
 	[ -d "${DEVKITPRO}/devkitARM" ] && \
