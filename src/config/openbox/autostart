@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+
+tint2 &
+"${HOME}/.screenlayout/two.sh" && sleep 3;
+nitrogen --restore &
+#compton &
+xbindkeys &
