@@ -3,6 +3,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
 (load-theme 'zenburn t)
 (setq-default tab-width 3
+				  asm-indent-level 3
 				  js-indent-level 3
 				  c-basic-offset 3
 				  c-default-style "bsd"
@@ -19,6 +20,9 @@
     nxml-child-indent 3
     nxml-attribute-indent 3
     nxml-slash-auto-complete-flag t)
+;; asm @
+(setq
+ asm-comment-char 64)
 
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'rest-mode-hook #'whitespace-mode)
