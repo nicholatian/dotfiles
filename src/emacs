@@ -40,8 +40,11 @@
 
 ; require language modes
 (require 'd-mode)
+(require 'gas-mode)
 (require 'go-mode)
 (require 'rust-mode)
+
+(add-to-list 'auto-mode-alist '("\\.s\\'" . gas-mode))
 
 ; startup setup
 (fset 'startup
