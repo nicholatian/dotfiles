@@ -10,9 +10,9 @@ fi
 echo "destination: ${dest}";
 
 for file in $(ls -1 src); do
-	if [ -d "${dest}/.${file}" ]; then
-		rm -rf "${dest}/.${file}";
-	fi
+	#if [ -d "${dest}/.${file}" ]; then
+	#	rm -rf "${dest}/.${file}";
+	#fi
 	cp -r "src/${file}" "${dest}/.${file}";
 done
 
