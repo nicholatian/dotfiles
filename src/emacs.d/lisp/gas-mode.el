@@ -135,24 +135,24 @@
   :link '(custom-group-link :tag "Font Lock Faces group" font-lock-faces)
   :group 'languages)
 
-(defcustom gas-comment-char ?\;
+(defcustom gas-comment-char ?@
   "The comment start character assumed by gas mode."
 
   :type 'character
 ;  :set 'gas-set-gas-comment-char
   :group 'gas)
 
-(defcustom gas-opcode-column 14
+(defcustom gas-opcode-column 3
   "The opcode column."
   :type 'integer
   :group 'gas)
 
-(defcustom gas-argument-column 20
+(defcustom gas-argument-column 16
   "The column for the arguments (if any)."
   :type 'integer
   :group 'gas)
 
-(defcustom gas-comment-column 36
+(defcustom gas-comment-column 40
   "The column where end of line asm comments go to."
   :type 'integer
   :group 'gas)
@@ -705,16 +705,16 @@ Currently defined symbols are: 'wip (work in progress),
                         )))))
                     
 (defun gas-change-comment-regexp (str)
-  "Return STR with all \";\"s replaced by (regexp-quote variable `gas-comment-char')."
+  "Return STR with all \"@\"s replaced by (regexp-quote variable `gas-comment-char')."
   (when str
     (setq str (replace-regexp-in-string
-                ".*\\[[^]]*\\(;\\)" gas-comment-string str t t 1))
-    (replace-regexp-in-string ";" (regexp-quote gas-comment-string) str t t)))
+                ".*\\[[^]]*\\(@\\)" gas-comment-string str t t 1))
+    (replace-regexp-in-string "@" (regexp-quote gas-comment-string) str t t)))
 
 (defun gas-change-comment-string (str)
-  "Return STR with all \";\"s replaced by variable `gas-comment-char'."
+  "Return STR with all \"@\"s replaced by variable `gas-comment-char'."
   (when str
-    (replace-regexp-in-string ";" gas-comment-string str t t)))
+    (replace-regexp-in-string "@" gas-comment-string str t t)))
 
 (defun gas-set-patterns (comment-char)
   "Replace `gas-patterns' by a copy, replacing ?\; by COMMENT-CHAR.
