@@ -13,6 +13,7 @@ alias -- -="cd -"
 alias s="cd ~/src"
 alias dl="cd ~/dl"
 alias g="git"
+alias makej='make -j$(nproc)'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
