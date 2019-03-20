@@ -29,6 +29,13 @@
 				</command>
 			</action>
 		</item>
+		<item icon="/home/alex/.config/obmenu-generator/icons/857893a07b551338bc9cd1908bece1af.png" label="Email Client">
+			<action name="Execute">
+				<command>
+				  <![CDATA[thunderbird]]>
+				</command>
+			</action>
+		</item>
 		<separator label="Layman’s Programs"/>
 		<item label="Audacious">
 			<action name="Execute">
@@ -48,6 +55,13 @@
 			<action name="Execute">
 				<command>
 					<![CDATA[discord-canary]]>
+				</command>
+			</action>
+		</item>
+		<item icon="/home/alex/.config/obmenu-generator/icons/cf15f618bc9c4a4eb28d1d1e71605924.png" label="HexChat IRC Client">
+			<action name="Execute">
+				<command>
+					<![CDATA[hexchat]]>
 				</command>
 			</action>
 		</item>
@@ -78,7 +92,7 @@
 		<item icon="/home/alex/.config/obmenu-generator/icons/60d6698e4b114584b3efea49c2ec54dd.png" label="Emacs">
 			<action name="Execute">
 				<command>
-				  <![CDATA[atom]]>
+				  <![CDATA[terminator -p emacs -e 'emacs']]>
 				</command>
 			</action>
 		</item>
