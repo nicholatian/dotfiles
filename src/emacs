@@ -6,6 +6,9 @@
 				  asm-indent-level 3
 				  js-indent-level 3
 				  c-basic-offset 3
+				  cperl-indent-level 3
+				  sh-basic-offset 3
+				  sh-indentation 3
 				  c-default-style "bsd"
 				  indent-tabs-mode t
 				  whitespace-line-column 79
@@ -16,6 +19,8 @@
 ;; indentation using smart-tabs-mode
 (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
 (smart-tabs-advice js-indent-line js-basic-offset)
+;; perl-indent-level
+(setq cperl-indent-level 3)
 ;; nxml-mode
 (setq 
     nxml-child-indent 3
@@ -41,7 +46,7 @@
 
 ; require language modes
 (require 'd-mode)
-(require 'gas-mode)
+;(require 'gas-mode)
 (require 'go-mode)
 (require 'rust-mode)
 
