@@ -29,3 +29,4 @@ src/config/discord*
 # Ignore Atom and GIMP
 src/config/[Aa]tom*
 src/config/GIMP*
+src/config/hexchat/servlist.conf
