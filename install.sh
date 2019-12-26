@@ -7,10 +7,16 @@ else
 	dest="$1";
 fi
 
+if [ "$(uname -s)" = 'Darwin' ] && command -v 'gcp'; then
+	_cp='gcp';
+else
+	_cp='cp';
+fi
+
 echo "destination: ${dest}";
 
 for file in $(ls -1 src); do
-	cp -TR "src/${file}" "${dest}/.${file}";
+	$_cp -TR "src/${file}" "${dest}/.${file}";
 done
 
 source "${dest}/.bash_profile"
@@ -18,3 +24,4 @@ source "${dest}/.bash_profile"
 unset file;
 unset bfile;
 unset dest;
+unset _cp;
