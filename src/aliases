@@ -15,6 +15,10 @@ alias dl="cd ~/dl"
 alias g="git"
 alias makej='make -j$(nproc)'
 
+if command -v gmake 2>&1 >/dev/null; then
+	alias make='gmake';
+fi
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
