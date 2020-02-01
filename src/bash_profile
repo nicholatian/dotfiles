@@ -54,4 +54,13 @@ if command -v go 1>/dev/null; then
 	[ -d "${GOPATH}/bin" ] && PATH="${GOPATH}/bin:${PATH}";
 fi
 
+export NVM_DIR="${HOME}/.nvm";
+
+if [ -d "${NVM_DIR}" ]; then
+	# This loads nvm
+	[ -s "$NVM_DIR/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
+	# This loads nvm bash_completion
+	[ -s "$NVM_DIR/bash_completion" ] && . "${NVM_DIR}/bash_completion"
+fi
+
 export PATH;
