@@ -52,5 +52,12 @@ if [ -d /opt/devkitpro ]; then
 		PATH="${DEVKITPPC}/bin:${PATH}";
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
-	export PATH;
 fi
+
+if [ -d /usr/local/opt/llvm ]; then
+	export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib:${LDFLAGS}";
+	export CPPFLAGS='-isystem /usr/local/opt/llvm/include';
+	PATH="/usr/local/opt/llvm/bin:${PATH}";
+fi
+
+export PATH;
