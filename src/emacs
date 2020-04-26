@@ -12,6 +12,7 @@
 				  whitespace-style '(face lines-tail))
 (c-set-offset 'innamespace 0)
 (require 'git-modes)
+(require 'typescript-mode)
 (require 'smart-tabs-mode)
 ;; indentation using smart-tabs-mode
 (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'cperl 'python 'ruby 'nxml)
