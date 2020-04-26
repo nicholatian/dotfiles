@@ -42,15 +42,35 @@ export MANPAGER='less -X';
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
 
+# devkitPro
 if [ -d /opt/devkitpro ]; then
 	export DEVKITPRO=/opt/devkitpro;
+	export DKP=$DKP;
 	[ -d "${DEVKITPRO}/devkitARM" ] && \
 		export DEVKITARM="${DEVKITPRO}/devkitARM" && \
+		export DKA=$DEVKITARM && \
 		PATH="${DEVKITARM}/bin:${PATH}";
 	[ -d "${DEVKITPRO}/devkitPPC" ] && \
 		export DEVKITPPC="${DEVKITPRO}/devkitPPC" && \
+		export DKPPC=$DEVKITPPC && \
 		PATH="${DEVKITPPC}/bin:${PATH}";
+	[ -d "${DEVKITPRO}/devkitA64" ] && \
+		export DEVKITA64="${DEVKITPRO}/devkitA64" && \
+		export DKA64=$DEVKITA64 && \
+		PATH="${DEVKITA64}/bin:${PATH}"; \
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
+	export PATH;
+fi
+
+# Dizzle Jatt G++
+if [ -d /opt/djgpp ]; then
+	export DJGPP=/opt/djgpp;
+	export DJDIR="${DJGPP}/i586-pc-msdosdjgpp";
+	export GCC_EXEC_PREFIX="${DJGPP}/lib/gcc/";
+	[ -d "${DJGPP}/bin" ] && \
+	   PATH="${DJGPP}/bin:${PATH}";
+#	[ -d "${DJGPP}/i586-pc-msdosdjgpp/bin" ] && \
+#		PATH="${DJGPP}/i586-pc-msdosdjgpp/bin:${PATH}";
 	export PATH;
 fi
