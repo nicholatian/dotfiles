@@ -16,6 +16,10 @@ alias g="git"
 alias makej='make -j$(nproc)'
 alias hexcat="hexdump -e '16/1 \"%02X \" \"\n\"'"
 
+if command -v gmake 2>&1 >/dev/null; then
+	alias make='gmake';
+fi
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -27,6 +31,7 @@ fi
 
 # List all files colorized in long format
 alias l="ls -laF ${colorflag}"
+alias lsh="ls -laHF ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
@@ -63,3 +68,6 @@ alias map="xargs -n1"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Default arguments for Valgrind
+alias valgrind='valgrind --read-inline-info=yes --read-var-info=yes --leak-check=full --leak-resolution=med --track-origins=yes --malloc-fill=69 --free-fill=DA'
