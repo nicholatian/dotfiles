@@ -14,6 +14,7 @@ alias s="cd ~/src"
 alias dl="cd ~/dl"
 alias g="git"
 alias makej='make -j$(nproc)'
+alias hexcat="hexdump -e '16/1 \"%02X \" \"\n\"'"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
