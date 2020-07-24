@@ -69,3 +69,7 @@ alias path='echo -e ${PATH//:/\\n}';
 
 # Default arguments for Valgrind
 alias valgrind='valgrind --read-inline-info=yes --read-var-info=yes --leak-check=full --leak-resolution=med --track-origins=yes --malloc-fill=69 --free-fill=DA';
+
+if command -v canto-curses 1>/dev/null; then
+	alias canto='canto-curses -D ~/.canto';
+fi
