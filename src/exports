@@ -85,7 +85,7 @@ if [ -d /opt/djgpp ]; then
 	export PATH;
 fi
 
-if [ "$(uname -s)" = 'Darwin']; then
+if [ "$(uname -s)" = 'Darwin' ]; then
 	if command -v /usr/local/opt/llvm/bin/clang 1>/dev/null; then
 		CC='/usr/local/opt/llvm/bin/clang';
 	elif command -v /usr/bin/clang 1>/dev/null; then
