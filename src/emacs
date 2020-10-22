@@ -46,7 +46,7 @@
 (setq clang-format-style-option "file")
 
 ; require language modes
-(require 'd-mode)
+;(require 'd-mode)
 ;(require 'gas-mode)
 (require 'go-mode)
 (require 'rust-mode)
