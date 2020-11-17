@@ -10,6 +10,16 @@ else
 	export EDITOR='nano';
 fi
 
+if command -v code 1>/dev/null; then
+	export VISUAL='code';
+elif command -v geany 1>/dev/null; then
+	export VISUAL='geany';
+elif command -v gedit 1>/dev/null; then
+	export VISUAL='gedit';
+else
+	export VISUAL="${EDITOR}";
+fi
+
 export XZ_DEFAULTS='-6eT 0'
 
 # Enable persistent REPL history for `node`.
@@ -42,22 +52,22 @@ export MANPAGER='less -X';
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
 
+# devkitPro
 if [ -d /opt/devkitpro ]; then
 	export DEVKITPRO=/opt/devkitpro;
+	export DKP=$DKP;
 	[ -d "${DEVKITPRO}/devkitARM" ] && \
 		export DEVKITARM="${DEVKITPRO}/devkitARM" && \
+		export DKA=$DEVKITARM && \
 		PATH="${DEVKITARM}/bin:${PATH}";
 	[ -d "${DEVKITPRO}/devkitPPC" ] && \
 		export DEVKITPPC="${DEVKITPRO}/devkitPPC" && \
+		export DKPPC=$DEVKITPPC && \
 		PATH="${DEVKITPPC}/bin:${PATH}";
+	[ -d "${DEVKITPRO}/devkitA64" ] && \
+		export DEVKITA64="${DEVKITPRO}/devkitA64" && \
+		export DKA64=$DEVKITA64 && \
+		PATH="${DEVKITA64}/bin:${PATH}"; \
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
 fi
-
-if [ -d /usr/local/opt/llvm ]; then
-	export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib:${LDFLAGS}";
-	export CPPFLAGS='-isystem /usr/local/opt/llvm/include';
-	PATH="/usr/local/opt/llvm/bin:${PATH}";
-fi
-
-export PATH;

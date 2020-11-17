@@ -3,3 +3,6 @@
 
 "xfce4-screenshooter"
 	Print
+
+"gmrun"
+	Mod2+Mod4 + space
