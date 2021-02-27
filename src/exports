@@ -72,31 +72,4 @@ if [ -d /opt/devkitpro ]; then
 		PATH="${DEVKITA64}/bin:${PATH}"; \
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
-	export PATH;
-fi
-
-# Dizzle Jatt G++
-if [ -d /opt/djgpp ]; then
-	export DJGPP=/opt/djgpp;
-	export DJDIR="${DJGPP}/i586-pc-msdosdjgpp";
-	export GCC_EXEC_PREFIX="${DJGPP}/lib/gcc/";
-	[ -d "${DJGPP}/bin" ] && \
-	   PATH="${DJGPP}/bin:${PATH}";
-#	[ -d "${DJGPP}/i586-pc-msdosdjgpp/bin" ] && \
-#		PATH="${DJGPP}/i586-pc-msdosdjgpp/bin:${PATH}";
-	export PATH;
-fi
-
-if [ "$(uname -s)" = 'Darwin' ]; then
-	if command -v /usr/local/opt/llvm/bin/clang 1>/dev/null; then
-		CC='/usr/local/opt/llvm/bin/clang';
-	elif command -v /usr/bin/clang 1>/dev/null; then
-		CC='/usr/bin/clang';
-	fi
-else
-	if command -v /usr/bin/gcc 1>/dev/null; then
-		CC='/usr/bin/gcc';
-	elif command -v /usr/bin/clang 1>/dev/null; then
-		CC='/usr/bin/clang';
-	fi
 fi
