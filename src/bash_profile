@@ -1,5 +1,5 @@
-#!/bin/sh
-#
+#!/bin/bash
+# -*- coding: utf-8 -*-
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

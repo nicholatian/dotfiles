@@ -2,19 +2,21 @@
 #
 
 # Source private, user-local exports
-[ -f "${HOME}/.privexports" ] && source "${HOME}/.privexports";
+[ -f "${HOME}/.privexports" ] && . "${HOME}/.privexports";
 
-if command -v emacs 1>/dev/null; then
+if command -v emacs 2>&1 1>/dev/null; then
 	export EDITOR='emacs';
 else
 	export EDITOR='nano';
 fi
 
-if command -v code 1>/dev/null; then
+if command -v vscodium 2>&1 1>/dev/null; then
+	export VISUAL='vscodium';
+elif command -v code 2>&1 1>/dev/null; then
 	export VISUAL='code';
-elif command -v geany 1>/dev/null; then
+elif command -v geany 2>&1 1>/dev/null; then
 	export VISUAL='geany';
-elif command -v gedit 1>/dev/null; then
+elif command -v gedit 2>&1 1>/dev/null; then
 	export VISUAL='gedit';
 else
 	export VISUAL="${EDITOR}";
@@ -55,18 +57,18 @@ export GPG_TTY=$(tty);
 # devkitPro
 if [ -d /opt/devkitpro ]; then
 	export DEVKITPRO=/opt/devkitpro;
-	export DKP=$DKP;
+	export DKP="$DEVKITPRO";
 	[ -d "${DEVKITPRO}/devkitARM" ] && \
 		export DEVKITARM="${DEVKITPRO}/devkitARM" && \
-		export DKA=$DEVKITARM && \
+		export DKA="$DEVKITARM" && \
 		PATH="${DEVKITARM}/bin:${PATH}";
 	[ -d "${DEVKITPRO}/devkitPPC" ] && \
 		export DEVKITPPC="${DEVKITPRO}/devkitPPC" && \
-		export DKPPC=$DEVKITPPC && \
+		export DKPPC="$DEVKITPPC" && \
 		PATH="${DEVKITPPC}/bin:${PATH}";
 	[ -d "${DEVKITPRO}/devkitA64" ] && \
 		export DEVKITA64="${DEVKITPRO}/devkitA64" && \
-		export DKA64=$DEVKITA64 && \
+		export DKA64="$DEVKITA64" && \
 		PATH="${DEVKITA64}/bin:${PATH}"; \
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";

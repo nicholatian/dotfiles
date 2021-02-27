@@ -19,7 +19,7 @@ for file in $(ls -1 src); do
 	$_cp -TR "src/${file}" "${dest}/.${file}";
 done
 
-source "${dest}/.bash_profile"
+. "${dest}/.profile"
 
 unset file;
 unset bfile;
