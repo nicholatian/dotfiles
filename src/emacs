@@ -2,17 +2,17 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
 (load-theme 'zenburn t)
-(setq-default tab-width 3
-				  asm-indent-level 3
-				  js-indent-level 3
-				  c-basic-offset 3
-				  cperl-indent-level 3
-				  sh-basic-offset 3
-				  sh-indentation 3
-				  c-default-style "bsd"
-				  indent-tabs-mode t
-				  whitespace-line-column 79
-				  whitespace-style '(face lines-tail))
+(setq-default tab-width 3)
+(setq-default asm-indent-level 3)
+(setq-default js-indent-level 3)
+(setq-default c-basic-offset 3)
+(setq-default cperl-indent-level 3)
+(setq-default sh-basic-offset 3)
+(setq-default sh-indentation 3)
+(setq-default c-default-style "bsd")
+(setq-default indent-tabs-mode t)
+(setq-default whitespace-line-column 79)
+(setq-default whitespace-style '(face lines-tail))
 (c-set-offset 'innamespace 0)
 (require 'git-modes)
 (require 'typescript-mode)
