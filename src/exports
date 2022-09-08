@@ -73,3 +73,12 @@ if [ -d /opt/devkitpro ]; then
 	[ -d "${DEVKITPRO}/tools" ] && \
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
 fi
+
+if test -d /opt/homebrew; then
+	PATH="/opt/homebrew/bin:$PATH";
+fi
+
+HOMEBREW_NO_ANALYTICS=1;
+
+export HOMEBREW_NO_ANALYTICS;
+export PATH;
