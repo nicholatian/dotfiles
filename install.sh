@@ -3,11 +3,11 @@
 
 if [ "$1" = '' ]; then
 	dest="${HOME}";
-else 
+else
 	dest="$1";
 fi
 
-if [ "$(uname -s)" = 'Darwin' ] && command -v 'gcp'; then
+if command -v 'gcp' 2>&1 >/dev/null; then
 	_cp='gcp';
 else
 	_cp='cp';
