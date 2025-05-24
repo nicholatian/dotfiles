@@ -16,6 +16,7 @@ alias mann='man -P most';
 
 if command -v gmake 2>&1 >/dev/null; then
 	alias make='gmake';
+	alias makej='gmake -j$(sysctl -n hw.ncpu)';
 fi
 
 # Detect which `ls` flavor is in use
