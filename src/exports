@@ -25,7 +25,7 @@ fi
 export XZ_DEFAULTS='-6eT 0'
 
 # Enable persistent REPL history for `node`.
-export NODE_REPL_HISTORY=~/.node_history;
+export NODE_REPL_HISTORY="${HOME}/.node_history";
 # Allow 32³ entries; the default is 1000.
 export NODE_REPL_HISTORY_SIZE='32768';
 # Use sloppy mode by default, matching web browsers.
@@ -52,7 +52,7 @@ export MANPAGER='less -X';
 
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
-export GPG_TTY=$(tty);
+export GPG_TTY="$(tty)";
 
 # devkitPro
 if [ -d /opt/devkitpro ]; then
@@ -74,8 +74,63 @@ if [ -d /opt/devkitpro ]; then
 		PATH="${DEVKITPRO}/tools/bin:${PATH}";
 fi
 
-if test -d /opt/homebrew; then
-	PATH="/opt/homebrew/bin:$PATH";
+# $HOME/bin and $HOME/.local/bin
+test -d "${HOME}/bin" && PATH="${HOME}/bin:${PATH}";
+test -d "${HOME}/.local/bin" && PATH="${HOME}/.local/bin:${PATH}";
+
+# Ruby gems
+if test -d "${HOME}/.gem"; then
+	PATH="${HOME}/gem/ruby/$(ls -1 --color=no ${HOME}/.gem/ruby \
+	| head -n 1)/bin:${PATH}";
+fi
+
+# Homebrew
+if command -v brew 2>&1 1>/dev/null; then
+	PATH="$(brew --prefix)/bin:${PATH}";
+	# Android SDK will need this
+	if test -d "$(brew --prefix)/opt/openjdk/bin"; then
+		PATH="$(brew --prefix)/opt/openjdk/bin:${PATH}";
+		JAVA_HOME="$(brew --prefix)/opt/openjdk";
+		export JAVA_HOME;
+	fi
+fi
+
+# Android SDK
+# base directory
+if test -d "${HOME}/.android-sdk"; then
+	ANDROID_HOME="${HOME}/.android-sdk";
+	export ANDROID_HOME;
+elif test -d "${HOME}/Android/Sdk"; then
+	ANDROID_HOME="${HOME}/Android/Sdk";
+	export ANDROID_HOME;
+fi
+# path additions
+if test "${ANDROID_HOME}" != ''; then
+	if test -d "${ANDROID_HOME}/emulator"; then
+		PATH="${ANDROID_HOME}/emulator:${PATH}";
+	fi
+	if test -d "${ANDROID_HOME}/platform-tools"; then
+		PATH="${ANDROID_HOME}/platform-tools:${PATH}";
+	fi
+	if test -d "${ANDROID_HOME}/cmdline-tools/latest/bin"; then
+		PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${PATH}";
+	fi
+fi
+
+# Node version manager
+if test -d "${HOME}/.nvm"; then
+	NVM_DIR="${HOME}/.nvm";
+	export NVM_DIR;
+	test -s "${NVM_DIR}/nvm.sh" && . "${NVM_DIR}/nvm.sh";
+	test -s "${NVM_DIR}/bash_completion" && \
+		. "${NVM_DIR}/bash_completion";
+fi
+
+# Golang
+if command -v go 1>/dev/null; then
+	GOPATH="${HOME}/.go";
+	export GOPATH;
+	test -d "${GOPATH}/bin" && PATH="${GOPATH}/bin:${PATH}";
 fi
 
 HOMEBREW_NO_ANALYTICS=1;
